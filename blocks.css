@@ -1,0 +1,11 @@
+#container{
+    display: grid;
+}
+
+.rows{
+    border-color: black;
+}
+
+.blocks{
+    border-color: black;
+}
