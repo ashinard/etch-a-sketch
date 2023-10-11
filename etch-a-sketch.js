@@ -1,31 +1,22 @@
-function makeRows(){ 
-    for(let i = 0; i < 16; i++)
+function changeColor(e){
+    document.body.style.backgroundColor = "black";
+}
+function makeGrid(boxNum){
+    for(let i = 0; i < boxNum; i++)
     {
         etch.appendChild(document.createElement("div"));
     }
 
     const addClass = document.querySelectorAll("div > div");
     addClass.forEach((div) => {
-        div.classList.add('rows');
+        div.classList.add('box');
         console.log(div);
     });
-}
-
-function makeBoxes(){
-    const rows = document.getElementsByClassName(".rows");
-
-    const addClass = document.querySelectorAll('div > div > div');
-    addClass.forEach((div) => {
-        div.classList.add('blocks');
-        console.log(div);
-    });
-}
-
-function makeGrid(){
-    makeRows();
-    makeBoxes();
 }
 
 const etch = document.getElementById("container");
 
-makeGrid();
+makeGrid(256);
+
+const square = document.querySelectorAll(".box");
+square.forEach(square => square.addEventListener("mouseover", changeColor));
