@@ -1,11 +1,26 @@
+body{
+    display: flexbox;
+}
 #container{
-    display: grid;
+    flex: 1;
+    display: flexbox;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
 }
 
 .rows{
+    flex: 1;
+    padding: 10px;
+    border-style: groove;
     border-color: black;
+    border-width: 1px;
 }
 
-.blocks{
+.rows > div{
+    padding: 10px;
+    border-style: groove;
     border-color: black;
+    border-width: 1px;
 }
