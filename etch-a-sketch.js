@@ -1,9 +1,14 @@
 function changeColor(e){
-    e.target.style.backgroundColor = "black";
-    console.log(e.target.style.backgroundColor);
+    if(e.target.style.backgroundColor != "black")
+    {
+        e.target.style.backgroundColor = "black";
+        console.log(e.target.style.backgroundColor);
+    }
 }
 
 function makeGrid(boxNum){
+    boxNum *= boxNum;
+    
     for(let i = 0; i < boxNum; i++)
     {
         etch.appendChild(document.createElement("div"));
@@ -17,27 +22,26 @@ function makeGrid(boxNum){
 }
 
 function newGrid(){
-    let answer = prompt("How many boxes on each side?");
-    console.log(answer);
+    let sides = Number.parseInt(prompt("Please enter a number. How many boxes per side?"));
+    console.log(Number.isInteger(sides));
 
-    let sides = parseInt(answer);
-
-    while(!(sides instanceof Number))
+    while(Number.isInteger(sides) === false)
     {
-        sides = prompt("Please enter a number. How many boxes per side?");
+        sides = Number.parseInt(prompt("Please enter a number. How many boxes per side?"));
         console.log(sides);
     }
 
     square.forEach(square => square.remove());
-    makeGrid(sides * sides);
+    makeGrid(sides);
+    square = document.querySelectorAll(".box");
     square.forEach(square => square.addEventListener("mouseover", changeColor));
 }
 
 const etch = document.getElementById("container");
 
-makeGrid(256);
+makeGrid(16);
 
-const square = document.querySelectorAll(".box");
+let square = document.querySelectorAll(".box");
 square.forEach(square => square.addEventListener("mouseover", changeColor));
 
 const size = document.getElementById("change");

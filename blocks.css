@@ -5,7 +5,6 @@ body{
     align-items: center;
 }
 #container{
-    flex: 1;
     display:flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -21,6 +20,6 @@ body{
     flex: 1;
     border-style: solid;
     border-width: 1px;
-    min-width: 30px;
-    min-height: 30px;
+    width: 30px;
+    height: 30px;
 }
