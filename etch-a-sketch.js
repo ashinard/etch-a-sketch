@@ -7,6 +7,8 @@ function changeColor(e){
 }
 
 function makeGrid(boxNum){
+    etch.style.setProperty('grid-template-columns', `repeat(${boxNum} , 1fr)`);
+    
     boxNum *= boxNum;
     
     for(let i = 0; i < boxNum; i++)
@@ -33,8 +35,11 @@ function newGrid(){
 
     square.forEach(square => square.remove());
     makeGrid(sides);
+    let newSize = 512/sides;
     square = document.querySelectorAll(".box");
     square.forEach(square => square.addEventListener("mouseover", changeColor));
+    square.forEach(square => square.style.width = `${newSize}px`);
+    square.forEach(square => square.style.height = `${newSize}px`);
 }
 
 const etch = document.getElementById("container");
