@@ -6,17 +6,20 @@ body{
 }
 
 #container{
-    display: grid;
-    grid-template-columns: repeat(16, 1fr);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 525px;
+    width: 525px;
     margin: 10px;
-    width: 512px;
-    height: 512px;
 }
 
 .box{
-    flex: 1;
+    margin: 0px;
+    background-color: white;
     border-style: solid;
-    border-width: 1px;
-    width: 32px;
-    height: 32px;
+    border-color: black;
+    border-width: thin;
+    height: 30px;
+    width: 30px;
 }

@@ -1,3 +1,16 @@
+function makeGrid(gridSize){
+    for(let i = 0; i < (gridSize * gridSize); i++)
+    {
+        bigBox.appendChild(document.createElement("div"));
+    }
+    const smallBox = document.querySelectorAll("div > div");
+
+    smallBox.forEach((div) => {
+        div.classList.add('box');
+        console.log(div);
+    })
+}
+
 function changeColor(e){
     if(e.target.style.backgroundColor != "black")
     {
@@ -6,48 +19,31 @@ function changeColor(e){
     }
 }
 
-function makeGrid(boxNum){
-    etch.style.setProperty('grid-template-columns', `repeat(${boxNum} , 1fr)`);
-    
-    boxNum *= boxNum;
-    
-    for(let i = 0; i < boxNum; i++)
-    {
-        etch.appendChild(document.createElement("div"));
-    }
-
-    const addClass = document.querySelectorAll("div > div");
-    addClass.forEach((div) => {
-        div.classList.add('box');
-        console.log(div);
-    });
-}
-
 function newGrid(){
-    let sides = Number.parseInt(prompt("Please enter a number. How many boxes per side?"));
-    console.log(Number.isInteger(sides));
+    let boxNum = Number.parseInt(prompt("How many boxes on each side?"));
+    console.log(boxNum);
 
-    while(Number.isInteger(sides) === false)
+    while(Number.isInteger(boxNum) === false || boxNum > 100)
     {
-        sides = Number.parseInt(prompt("Please enter a number. How many boxes per side?"));
-        console.log(sides);
+        boxNum = Number.parseInt(prompt("Please enter a valid number of boxes."));
     }
 
-    square.forEach(square => square.remove());
-    makeGrid(sides);
-    let newSize = 512/sides;
-    square = document.querySelectorAll(".box");
-    square.forEach(square => square.addEventListener("mouseover", changeColor));
-    square.forEach(square => square.style.width = `${newSize}px`);
-    square.forEach(square => square.style.height = `${newSize}px`);
+    let newSize = (512 / boxNum) - 1.5;
+
+    boxes.forEach(boxes => boxes.remove());
+    makeGrid(boxNum);
+    boxes = document.querySelectorAll(".box");
+    boxes.forEach(boxes => boxes.style.width = `${newSize}px`);
+    boxes.forEach(boxes => boxes.style.height = `${newSize}px`);
+    console.log(newSize);
+    boxes.forEach(boxes => boxes.addEventListener("mouseover", changeColor));
 }
 
-const etch = document.getElementById("container");
-
+const bigBox = document.getElementById("container");
 makeGrid(16);
 
-let square = document.querySelectorAll(".box");
-square.forEach(square => square.addEventListener("mouseover", changeColor));
+let boxes = document.querySelectorAll(".box");
+boxes.forEach(boxes => boxes.addEventListener("mouseover", changeColor));
 
-const size = document.getElementById("change");
-size.addEventListener("click", newGrid);
+const pressMe = document.getElementById("change");
+pressMe.addEventListener("click", newGrid);
